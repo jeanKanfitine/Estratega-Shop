@@ -779,7 +779,149 @@
     .topbar-inner{padding:12px 18px;}
     .wallet{padding:5px 10px 5px 5px;}
   }
+
+  /* ============ TOAST ============ */
+  .toast{
+    position:fixed; bottom:28px; left:50%; transform:translateX(-50%) translateY(20px);
+    background:var(--navy); border:1px solid var(--line); border-radius:var(--radius-sm);
+    padding:12px 22px; font-size:0.86rem; color:white; z-index:2000;
+    opacity:0; transition:all .3s var(--ease); pointer-events:none; white-space:nowrap;
+    box-shadow:0 8px 30px rgba(0,0,0,0.4);
+  }
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+  .toast-success{border-color:rgba(52,199,89,0.4); background:rgba(52,199,89,0.12);}
+  .toast-error{border-color:rgba(230,49,76,0.4); background:rgba(230,49,76,0.12);}
+
+  /* ============ GATE ERROR ============ */
+  .gate-error{
+    font-size:0.8rem; color:#e63950; min-height:0; margin-top:-8px;
+    transition:all .25s var(--ease);
+  }
+
+  /* ============ UPLOAD PROGRESS ============ */
+  .upload-progress{
+    font-family:'Space Mono', monospace; font-size:0.78rem; color:var(--gold-light);
+  }
+
+  /* ============ ADMIN PANEL ============ */
+  .admin-fab{
+    position:fixed; bottom:32px; right:32px; z-index:500;
+    width:52px; height:52px; border-radius:50%; display:none;
+    align-items:center; justify-content:center; font-size:1.3rem;
+    background:var(--navy); border:1.5px solid var(--line);
+    box-shadow:0 8px 24px rgba(0,0,0,0.5); cursor:pointer;
+    transition:transform .25s var(--ease), box-shadow .25s var(--ease);
+  }
+  .admin-fab:hover{transform:scale(1.1); box-shadow:0 12px 32px rgba(0,0,0,0.6);}
+
+  .admin-panel{
+    position:fixed; inset:0; z-index:900;
+    background:rgba(5,6,19,0.97); backdrop-filter:blur(14px);
+    display:flex; flex-direction:column;
+    transform:translateX(100%); transition:transform .4s var(--ease);
+    overflow:hidden;
+  }
+  .admin-panel.open{transform:translateX(0);}
+
+  .admin-header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 28px; border-bottom:1px solid var(--line);
+    font-family:'Playfair Display', serif; font-size:1.1rem; color:white; font-weight:600;
+    flex-shrink:0;
+  }
+  .admin-close{
+    width:34px; height:34px; border-radius:50%; border:1px solid var(--line);
+    background:transparent; color:var(--ink-300); font-size:1rem; display:flex;
+    align-items:center; justify-content:center;
+  }
+  .admin-close:hover{background:rgba(255,255,255,0.08); color:white;}
+
+  .admin-tabs{
+    display:flex; gap:0; border-bottom:1px solid var(--line); flex-shrink:0;
+  }
+  .admin-tabs button{
+    flex:1; padding:14px; border:none; background:transparent; color:var(--ink-300);
+    font-weight:700; font-size:0.86rem; border-bottom:2px solid transparent;
+    transition:all .2s var(--ease);
+  }
+  .admin-tabs button.active{color:white; border-bottom-color:var(--gold-light);}
+
+  .admin-tab-content{
+    flex:1; overflow-y:auto; padding:24px 28px;
+  }
+  .admin-hint{font-size:0.82rem; color:var(--ink-500); margin-bottom:18px;}
+
+  .admin-order-card{
+    border:1px solid var(--line); border-radius:var(--radius-md); padding:18px;
+    margin-bottom:14px; background:rgba(255,255,255,0.03);
+  }
+  .ao-header{display:flex; align-items:center; gap:12px; margin-bottom:10px; flex-wrap:wrap;}
+  .ao-ref{font-family:'Space Mono', monospace; font-size:0.8rem; color:var(--gold-light);}
+  .ao-name{font-size:0.9rem; color:white; font-weight:600;}
+  .ao-total{font-family:'Space Mono', monospace; font-size:0.82rem; color:var(--ink-300); margin-left:auto;}
+  .ao-progress{display:flex; align-items:center; gap:10px; margin-bottom:10px;}
+  .ao-bar{flex:1; height:6px; border-radius:6px; background:rgba(255,255,255,0.08); overflow:hidden;}
+  .ao-fill{height:100%; border-radius:6px; background:var(--gold-light);}
+  .ao-progress span{font-family:'Space Mono', monospace; font-size:0.78rem; color:var(--ink-300); white-space:nowrap;}
+  .ao-photo{width:80px; height:80px; object-fit:cover; border-radius:10px; margin-bottom:10px;}
+  .ao-update{display:flex; gap:10px; margin-bottom:8px;}
+  .ao-update input{
+    flex:1; background:rgba(0,0,0,0.3); border:1px solid var(--line); border-radius:var(--radius-sm);
+    padding:9px 12px; color:white; font-family:'Space Mono', monospace; font-size:0.88rem;
+  }
+  .ao-update button{
+    padding:9px 16px; border-radius:var(--radius-sm); background:var(--indigo-bright);
+    border:none; color:white; font-weight:700; font-size:0.82rem;
+  }
+  .ao-contact{font-size:0.76rem; color:var(--ink-500);}
+
+  .admin-lb-tabs{display:flex; gap:8px; margin-bottom:18px;}
+  .admin-lb-tabs button{
+    padding:8px 16px; border-radius:var(--radius-sm); border:1px solid var(--line);
+    background:transparent; color:var(--ink-300); font-weight:700; font-size:0.82rem;
+    transition:all .2s var(--ease);
+  }
+  .admin-lb-tabs button.active{background:rgba(255,255,255,0.08); color:white; border-color:rgba(255,255,255,0.3);}
+
+  .admin-lb-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 0; border-bottom:1px solid var(--line-soft);
+    font-size:0.84rem; color:var(--ink-100);
+  }
+  .admin-lb-row button{
+    padding:6px 12px; border-radius:var(--radius-sm); border:1px solid rgba(230,49,76,0.4);
+    background:rgba(230,49,76,0.1); color:#e63950; font-size:0.74rem; font-weight:700;
+  }
+
+  .admin-add-form{
+    margin-top:20px; padding:20px; background:rgba(255,255,255,0.03);
+    border:1px solid var(--line); border-radius:var(--radius-md); display:flex; flex-direction:column; gap:12px;
+  }
+  .admin-add-form h4{font-family:'Playfair Display', serif; color:white; font-size:1rem; margin-bottom:4px;}
+  .admin-add-form input, .admin-add-form select{
+    background:rgba(0,0,0,0.3); border:1px solid var(--line); border-radius:var(--radius-sm);
+    padding:10px 14px; color:white; font-family:'Space Mono', monospace; font-size:0.86rem;
+  }
+  .admin-add-form button{
+    padding:12px; border-radius:var(--radius-sm); background:var(--indigo-bright);
+    border:none; color:white; font-weight:700; font-size:0.86rem; margin-top:4px;
+  }
+
+  .lb-empty{padding:28px; text-align:center; color:var(--ink-500); font-size:0.88rem;}
+
+  /* logout button in header */
+  .btn-logout{
+    background:transparent; border:1px solid var(--line); color:var(--ink-300);
+    padding:6px 12px; border-radius:999px; font-size:0.76rem; font-weight:700;
+    transition:all .25s var(--ease); display:none;
+  }
+  .btn-logout:hover{border-color:var(--ink-500); color:white;}
+  .btn-logout.visible{display:inline-flex; align-items:center; gap:6px;}
 </style>
+  <!-- Firebase SDK (compat) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
 
@@ -803,33 +945,22 @@
 
     <form class="gate-form" id="formInscription">
       <div class="field-row">
-        <div class="field"><label>Nom</label><input type="text" required placeholder="Adjovi"></div>
-        <div class="field"><label>Prénom</label><input type="text" required placeholder="Espoir"></div>
+        <div class="field"><label>Nom</label><input type="text" id="regLastName" required placeholder="Adjovi"></div>
+        <div class="field"><label>Prénom</label><input type="text" id="regFirstName" required placeholder="Espoir"></div>
       </div>
-      <div class="method-toggle" data-form="inscription">
-        <button type="button" class="active" data-method="phone">📱 Téléphone</button>
-        <button type="button" data-method="email">✉️ E-mail</button>
-      </div>
-      <div class="field">
-        <label id="inscriptionContactLabel">Contact</label>
-        <input type="text" id="inscriptionContactInput" required placeholder="+228 9X XX XX XX">
-      </div>
-      <div class="field"><label>Mot de passe</label><input type="password" required placeholder="••••••••"></div>
-      <button type="submit" class="btn btn-primary" style="width:100%; margin-top:8px;">Créer mon compte</button>
-      <p class="gate-note" id="inscriptionNote">Gratuit et rapide — vous recevrez un code de vérification par SMS.</p>
+      <div class="field"><label>Contact (+228...)</label><input type="text" id="regContact" required placeholder="+228 9X XX XX XX"></div>
+      <div class="field"><label>Adresse e-mail</label><input type="email" id="regEmail" required placeholder="vous@exemple.com"></div>
+      <div class="field"><label>Mot de passe (6 caractères min.)</label><input type="password" id="regPassword" required placeholder="••••••••" minlength="6"></div>
+      <div class="gate-error" id="regError"></div>
+      <button type="submit" class="btn btn-primary" style="width:100%; margin-top:8px;" id="regSubmit">Créer mon compte</button>
+      <p class="gate-note">Gratuit et rapide — une seule inscription suffit pour tout le site.</p>
     </form>
 
     <form class="gate-form" id="formConnexion" style="display:none;">
-      <div class="method-toggle" data-form="connexion">
-        <button type="button" class="active" data-method="phone">📱 Téléphone</button>
-        <button type="button" data-method="email">✉️ E-mail</button>
-      </div>
-      <div class="field">
-        <label id="connexionContactLabel">Contact</label>
-        <input type="text" id="connexionContactInput" required placeholder="+228 9X XX XX XX">
-      </div>
-      <div class="field"><label>Mot de passe</label><input type="password" required placeholder="••••••••"></div>
-      <button type="submit" class="btn btn-primary" style="width:100%; margin-top:8px;">Se connecter</button>
+      <div class="field"><label>Adresse e-mail</label><input type="email" id="loginEmail" required placeholder="vous@exemple.com"></div>
+      <div class="field"><label>Mot de passe</label><input type="password" id="loginPassword" required placeholder="••••••••"></div>
+      <div class="gate-error" id="loginError"></div>
+      <button type="submit" class="btn btn-primary" style="width:100%; margin-top:8px;" id="loginSubmit">Se connecter</button>
       <p class="gate-note">Pas encore de compte ? Revenez à l'onglet Inscription.</p>
     </form>
   </div>
@@ -861,6 +992,7 @@
       <a href="https://wa.me/22870950715" class="btn btn-wa btn-sm">WhatsApp</a>
     </nav>
 
+    <button class="btn-logout" id="logoutBtn">Déconnexion</button>
     <button class="menu-toggle" id="menuToggle" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -1047,10 +1179,13 @@
     </div>
 
     <div class="builder-card reveal">
-      <div class="upload-zone">
-        <span class="ic">📷</span>
-        Glissez une photo ici ou cliquez pour l'ajouter
-      </div>
+      <label class="upload-zone" for="orderPhotoInput" id="orderPhotoZone">
+        <span class="ic" id="orderPhotoIcon">📷</span>
+        <span id="orderPhotoText">Glissez une photo ici ou cliquez pour l'ajouter</span>
+        <span class="upload-progress" id="orderPhotoProgress" style="display:none">Envoi en cours… 0%</span>
+        <img id="orderPhotoPreview" src="" style="display:none; width:100%; max-height:160px; object-fit:cover; border-radius:10px; margin-top:10px;">
+      </label>
+      <input type="file" id="orderPhotoInput" accept="image/*" style="display:none">
       <div class="field-row">
         <div class="field">
           <label>Coût unitaire (FCFA)</label>
@@ -1344,7 +1479,11 @@
     </div>
 
     <div class="profile-card reveal">
-      <div class="avatar-upload">＋</div>
+      <label class="avatar-upload" for="profilePhotoInput" id="profileAvatarLabel" title="Cliquer pour changer la photo">
+        <span id="profileAvatarPlus">＋</span>
+        <img id="profileAvatarImg" src="" style="display:none; width:100%; height:100%; object-fit:cover; border-radius:50%;">
+      </label>
+      <input type="file" id="profilePhotoInput" accept="image/*" style="display:none">
       <div class="profile-fields">
         <div class="field"><label>Nom</label><input type="text" placeholder="Adjovi"></div>
         <div class="field"><label>Prénom</label><input type="text" placeholder="Espoir"></div>
@@ -1426,333 +1565,602 @@
 
 </div><!-- /#siteContent -->
 
+<!-- ADMIN PANEL injected by JS -->
+
 <script>
-  // mobile nav
-  const menuToggle = document.getElementById('menuToggle');
-  const mainNav = document.getElementById('mainNav');
-  menuToggle.addEventListener('click', () => mainNav.classList.toggle('open'));
-  mainNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mainNav.classList.remove('open')));
+// ═══════════════════════════════════════════════════════════
+//  ESTRATEGA SHOP — Script principal
+//  Firebase (Auth + Firestore) + Cloudinary (uploads photos)
+// ═══════════════════════════════════════════════════════════
 
-  // marquee duplicate for seamless loop
-  const marquee = document.getElementById('marquee');
-  marquee.innerHTML += marquee.innerHTML;
+const CLOUDINARY_CLOUD  = 'dmsv8wyzr';
+const CLOUDINARY_PRESET = 'estratega shop-uploads';
+const ADMIN_EMAIL       = 'jeankanfitine060@gmail.com';
 
-  // reveal on scroll
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.15 });
-  revealEls.forEach(el => io.observe(el));
+firebase.initializeApp({
+  apiKey:"AIzaSyCOSRtbb9c9Lvgn76peSfgiEDsF8oHmIck",
+  authDomain:"estratega-shop.firebaseapp.com",
+  projectId:"estratega-shop",
+  storageBucket:"estratega-shop.firebasestorage.app",
+  messagingSenderId:"253688039172",
+  appId:"1:253688039172:web:d1ef959978ff9018827251"
+});
+const auth = firebase.auth();
+const db   = firebase.firestore();
 
-  // ---- number formatting ----
-  function fmt(n){ return Math.round(n).toLocaleString('fr-FR').replace(/,/g,' '); }
+// ── UTILS ────────────────────────────────────────────────────
+function fmt(n){ return Math.round(n).toLocaleString('fr-FR').replace(/,/g,' '); }
+function genRef(){ return 'EST-'+String(Date.now()).slice(-4)+Math.floor(Math.random()*900+100); }
+function colorForPct(p){
+  const s=[{p:0,c:[230,49,76]},{p:33,c:[243,146,43]},{p:66,c:[244,196,48]},{p:100,c:[52,199,89]}];
+  let a=s[0],b=s[s.length-1];
+  for(let i=0;i<s.length-1;i++){if(p>=s[i].p&&p<=s[i+1].p){a=s[i];b=s[i+1];break;}}
+  const r=(b.p-a.p)||1,t=(p-a.p)/r,m=a.c.map((v,i)=>Math.round(v+(b.c[i]-v)*t));
+  return `rgb(${m[0]},${m[1]},${m[2]})`;
+}
+function statusLabel(p){
+  if(p<20)return'Démarrage';if(p<55)return'En bonne voie';
+  if(p<90)return'Presque terminé';return'Commande soldée ✓';
+}
+function firebaseErrorFr(code){
+  return({'auth/email-already-in-use':'Cet e-mail est déjà utilisé.',
+    'auth/invalid-email':'Adresse e-mail invalide.',
+    'auth/weak-password':'Mot de passe trop court (6 caractères minimum).',
+    'auth/user-not-found':'Aucun compte trouvé avec cet e-mail.',
+    'auth/wrong-password':'Mot de passe incorrect.',
+    'auth/too-many-requests':'Trop de tentatives. Réessayez dans quelques minutes.',
+    'auth/network-request-failed':'Problème de connexion internet.'}[code])||'Une erreur est survenue.';
+}
 
-  // ---- TANK DEMO ----
-  const ORDER_TOTAL = 90000;
-  const tankSlider = document.getElementById('tankSlider');
-  const tankFill = document.getElementById('tankFill');
-  const tankPct = document.getElementById('tankPct');
-  const tankStatus = document.getElementById('tankStatus');
-  const paidAmt = document.getElementById('paidAmt');
-  const sliderVal = document.getElementById('sliderVal');
+// ── STATE ────────────────────────────────────────────────────
+let currentUser=null,isAdmin=false,orderPhotoUrl='',profilePhotoUrl='';
 
-  function colorForPct(p){
-    // 4-stop interpolation: red -> orange -> yellow -> green
-    const stops = [
-      {p:0,   c:[230,49,76]},   // red
-      {p:33,  c:[243,146,43]},  // orange
-      {p:66,  c:[244,196,48]},  // yellow
-      {p:100, c:[52,199,89]}    // green
-    ];
-    let a = stops[0], b = stops[stops.length-1];
-    for(let i=0;i<stops.length-1;i++){
-      if(p >= stops[i].p && p <= stops[i+1].p){ a = stops[i]; b = stops[i+1]; break; }
-    }
-    const range = (b.p - a.p) || 1;
-    const t = (p - a.p) / range;
-    const mix = a.c.map((v,i) => Math.round(v + (b.c[i]-v)*t));
-    return `rgb(${mix[0]},${mix[1]},${mix[2]})`;
+// ── MOBILE NAV ───────────────────────────────────────────────
+const menuToggle=document.getElementById('menuToggle');
+const mainNav=document.getElementById('mainNav');
+menuToggle.addEventListener('click',()=>mainNav.classList.toggle('open'));
+mainNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mainNav.classList.remove('open')));
+const marquee=document.getElementById('marquee');
+marquee.innerHTML+=marquee.innerHTML;
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// ═══════════════════════════════════════════════════════════
+//  AUTHENTIFICATION
+// ═══════════════════════════════════════════════════════════
+const authGate=document.getElementById('authGate');
+const siteContent=document.getElementById('siteContent');
+siteContent.style.display='none';
+
+auth.onAuthStateChanged(async user=>{
+  if(user){
+    currentUser=user; isAdmin=(user.email===ADMIN_EMAIL);
+    authGate.classList.add('unlocked'); siteContent.style.display=''; window.scrollTo(0,0);
+    await loadUserProfile(user); loadLeaderboard();
+    if(isAdmin) injectAdminButton();
+    const lb=document.getElementById('logoutBtn'); if(lb) lb.classList.add('visible');
+  } else {
+    currentUser=null; isAdmin=false;
+    authGate.classList.remove('unlocked'); siteContent.style.display='none';
   }
+});
 
-  function statusLabel(p){
-    if(p < 20) return 'Démarrage';
-    if(p < 55) return 'En bonne voie';
-    if(p < 90) return 'Presque y est';
-    return 'Commande soldée';
-  }
+// tabs
+document.getElementById('tabInscription').addEventListener('click',()=>{
+  document.getElementById('tabInscription').classList.add('active');
+  document.getElementById('tabConnexion').classList.remove('active');
+  document.getElementById('formInscription').style.display='block';
+  document.getElementById('formConnexion').style.display='none';
+});
+document.getElementById('tabConnexion').addEventListener('click',()=>{
+  document.getElementById('tabConnexion').classList.add('active');
+  document.getElementById('tabInscription').classList.remove('active');
+  document.getElementById('formConnexion').style.display='block';
+  document.getElementById('formInscription').style.display='none';
+});
 
-  function updateTank(p){
-    const top = colorForPct(Math.min(100,p+12));
-    const bottom = colorForPct(p);
-    tankFill.style.height = p + '%';
-    tankFill.style.background = `linear-gradient(180deg, ${top}, ${bottom})`;
-    tankPct.textContent = p + '%';
-    tankStatus.textContent = statusLabel(p);
-    paidAmt.textContent = fmt(ORDER_TOTAL * p/100) + ' F';
-    sliderVal.textContent = p + '%';
-  }
-  tankSlider.addEventListener('input', e => updateTank(parseInt(e.target.value)));
-  updateTank(parseInt(tankSlider.value));
+function showGateMsg(msg,type){
+  let el=document.getElementById('gateMsg');
+  if(!el){el=document.createElement('p');el.id='gateMsg';
+    el.style.cssText='text-align:center;font-size:.82rem;padding:10px 14px;border-radius:10px;margin-top:14px;';
+    document.querySelector('.gate-card').appendChild(el);}
+  el.textContent=msg;
+  el.style.background=type==='success'?'rgba(52,199,89,.12)':'rgba(230,49,76,.12)';
+  el.style.color=type==='success'?'#34c759':'#e63950';
+  el.style.border=`1px solid ${type==='success'?'rgba(52,199,89,.3)':'rgba(230,49,76,.3)'}`;
+}
 
-  // ---- ORDER BUILDER ----
-  const unitPrice = document.getElementById('unitPrice');
-  const qtyVal = document.getElementById('qtyVal');
-  const orderTotal = document.getElementById('orderTotal');
-  let qty = 2;
-  function refreshOrder(){
-    const total = (parseFloat(unitPrice.value)||0) * qty;
-    orderTotal.textContent = fmt(total) + ' F';
-    qtyVal.textContent = qty;
-    const payAmtEl = document.getElementById('builderPayAmt');
-    if(payAmtEl) payAmtEl.textContent = fmt(total) + ' F';
-  }
-  document.getElementById('qtyMinus').addEventListener('click', () => { qty = Math.max(1, qty-1); refreshOrder(); });
-  document.getElementById('qtyPlus').addEventListener('click', () => { qty = Math.min(99, qty+1); refreshOrder(); });
-  unitPrice.addEventListener('input', refreshOrder);
-  refreshOrder();
-
-  // ---- TOKEN BUY WIDGET ----
-  const btnToken = document.getElementById('btnToken');
-  const btnGolden = document.getElementById('btnGolden');
-  const buyQtyVal = document.getElementById('buyQtyVal');
-  const buyPrice = document.getElementById('buyPrice');
-  const tokenPayAmt = document.getElementById('tokenPayAmt');
-  let currentCoin = 'token';
-  let buyQty = 100;
-
-  function refreshBuy(){
-    const amount = currentCoin === 'token' ? buyQty * 0.5 : buyQty * 500;
-    buyQtyVal.textContent = buyQty;
-    buyPrice.textContent = fmt(amount) + ' F';
-    tokenPayAmt.textContent = fmt(amount) + ' F';
-  }
-  btnToken.addEventListener('click', () => {
-    currentCoin = 'token'; buyQty = 100;
-    btnToken.classList.add('active'); btnGolden.classList.remove('active');
-    refreshBuy();
-  });
-  btnGolden.addEventListener('click', () => {
-    currentCoin = 'golden'; buyQty = 1;
-    btnGolden.classList.add('active'); btnToken.classList.remove('active');
-    refreshBuy();
-  });
-  document.getElementById('buyMinus').addEventListener('click', () => {
-    const step = currentCoin === 'token' ? 100 : 1;
-    buyQty = Math.max(step, buyQty - step);
-    refreshBuy();
-  });
-  document.getElementById('buyPlus').addEventListener('click', () => {
-    const step = currentCoin === 'token' ? 100 : 1;
-    buyQty += step;
-    refreshBuy();
-  });
-  refreshBuy();
-
-  // ---- PAYMENT METHOD PILLS (Mixx by Yas / Flooz / Carte bancaire) ----
-  function setupPmIcons(scope, labelId, inputId){
-    const group = document.querySelector(`.pm-icons[data-scope="${scope}"]`);
-    if(!group) return;
-    const label = document.getElementById(labelId);
-    const input = document.getElementById(inputId);
-    const copy = {
-      mixx:  {l:'Numéro Mixx by Yas', p:'+228 9X XX XX XX', type:'text'},
-      flooz: {l:'Numéro Flooz',       p:'+228 9X XX XX XX', type:'text'},
-      card:  {l:'Numéro de carte',    p:'•••• •••• •••• ••••', type:'text'}
-    };
-    group.querySelectorAll('button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        group.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const c = copy[btn.dataset.method];
-        label.textContent = c.l;
-        input.placeholder = c.p;
-        input.value = '';
-      });
+// Inscription
+document.getElementById('formInscription').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const btn=e.target.querySelector('button[type=submit]');
+  const email=document.getElementById('inscriptionContactInput').value.trim();
+  const pwd=e.target.querySelector('input[type=password]').value;
+  const inputs=e.target.querySelectorAll('input[type=text]');
+  const nom=inputs[0]?.value.trim()||'';
+  const prenom=inputs[1]?.value.trim()||'';
+  const contact=inputs[2]?.value.trim()||'';
+  btn.disabled=true; btn.textContent='Création en cours…';
+  try{
+    const c=await auth.createUserWithEmailAndPassword(email,pwd);
+    await db.collection('users').doc(c.user.uid).set({
+      nom,prenom,email,contact,photoURL:'',tokens:0,golden:0,
+      createdAt:firebase.firestore.FieldValue.serverTimestamp()
     });
-  }
-  setupPmIcons('builder', 'builderPmLabel', 'builderPmInput');
-  setupPmIcons('token', 'tokenPmLabel', 'tokenPmInput');
+    await c.user.sendEmailVerification();
+    showGateMsg('✓ Compte créé ! Vérifiez votre e-mail.','success');
+  }catch(err){showGateMsg(firebaseErrorFr(err.code),'error');btn.disabled=false;btn.textContent='Créer mon compte';}
+});
 
-  // ---- AUTOMATIC / MANUAL PAYMENT TOGGLE ----
-  function setupPayModeToggle(scope, autoPanelId, manualPanelId, noteId, autoEnabled){
-    const group = document.querySelector(`.buy-toggle[data-scope="${scope}"]`);
-    if(!group) return;
-    const autoPanel = document.getElementById(autoPanelId);
-    const manualPanel = document.getElementById(manualPanelId);
-    const note = noteId ? document.getElementById(noteId) : null;
-    let noteTimer;
-    group.querySelectorAll('button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        if(btn.dataset.mode === 'auto' && !autoEnabled){
-          // Not wired to a real payment aggregator yet — explain instead of faking a checkout.
-          if(note){
-            note.classList.add('show');
-            clearTimeout(noteTimer);
-            noteTimer = setTimeout(() => note.classList.remove('show'), 5000);
-          }
-          return;
-        }
-        group.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        if(note) note.classList.remove('show');
-        if(btn.dataset.mode === 'auto'){
-          autoPanel.classList.add('show'); manualPanel.classList.remove('show');
-        } else {
-          manualPanel.classList.add('show'); autoPanel.classList.remove('show');
-        }
-      });
-    });
-  }
-  // autoEnabled stays false until a real payment aggregator (e.g. CinetPay) is connected server-side.
-  setupPayModeToggle('builder', 'builderAutoPanel', 'builderManualPanel', 'builderAutoNote', false);
-  setupPayModeToggle('tokenpay', 'tokenAutoPanel', 'tokenManualPanel', 'tokenAutoNote', false);
+// Connexion
+document.getElementById('formConnexion').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const btn=e.target.querySelector('button[type=submit]');
+  const email=document.getElementById('connexionContactInput').value.trim();
+  const pwd=e.target.querySelector('input[type=password]').value;
+  btn.disabled=true; btn.textContent='Connexion…';
+  try{ await auth.signInWithEmailAndPassword(email,pwd); }
+  catch(err){ showGateMsg(firebaseErrorFr(err.code),'error'); btn.disabled=false; btn.textContent='Se connecter'; }
+});
 
-  // ---- SIMULATED ON-SITE CHECKOUT ----
-  // Demo only: represents the UX once a real payment aggregator (e.g. CinetPay) is connected server-side.
-  function simulatePayment(btn, onSuccess){
-    if(btn.disabled) return;
-    const original = btn.innerHTML;
-    btn.disabled = true;
-    btn.innerHTML = 'Vérification du paiement…';
-    setTimeout(() => {
-      btn.innerHTML = original;
-      btn.disabled = false;
-      onSuccess();
-    }, 1600);
-  }
+// Déconnexion
+const logoutBtn=document.getElementById('logoutBtn');
+if(logoutBtn) logoutBtn.addEventListener('click',()=>auth.signOut());
 
-  document.getElementById('builderPayBtn').addEventListener('click', function(){
-    simulatePayment(this, () => {
-      document.getElementById('builderPaySuccess').classList.add('show');
-    });
-  });
-
-  document.getElementById('tokenPayBtn').addEventListener('click', function(){
-    simulatePayment(this, () => {
-      const successMsg = document.getElementById('tokenPaySuccessMsg');
-      if(currentCoin === 'token'){
-        const el = document.getElementById('walletTokenCount');
-        const current = parseInt(el.textContent.replace(/\s/g, '')) || 0;
-        el.textContent = fmt(current + buyQty);
-        successMsg.textContent = `Paiement confirmé — ${buyQty} Token ajoutés à votre portefeuille.`;
-      } else {
-        const el = document.getElementById('walletGoldenCount');
-        const current = parseInt(el.textContent.replace(/\s/g, '')) || 0;
-        el.textContent = fmt(current + buyQty);
-        successMsg.textContent = `Paiement confirmé — ${buyQty} Golden ajoutés à votre portefeuille.`;
+// Bascule téléphone/email (téléphone bientôt)
+function setupMethodToggle(formId,labelId,inputId,noteId){
+  const scope=document.querySelector(`.method-toggle[data-form="${formId}"]`);
+  if(!scope) return;
+  const label=document.getElementById(labelId),input=document.getElementById(inputId);
+  const note=noteId?document.getElementById(noteId):null; let timer;
+  scope.querySelectorAll('button').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      if(btn.dataset.method==='phone'){
+        if(note){note.classList.add('show');clearTimeout(timer);timer=setTimeout(()=>note.classList.remove('show'),5000);}
+        return;
       }
-      document.getElementById('tokenPaySuccess').classList.add('show');
+      scope.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active'); if(note) note.classList.remove('show');
+      label.textContent='Adresse e-mail'; input.type='email'; input.placeholder='vous@exemple.com';
     });
   });
+}
+setupMethodToggle('inscription','inscriptionContactLabel','inscriptionContactInput','inscriptionMethodNote');
+setupMethodToggle('connexion','connexionContactLabel','connexionContactInput','connexionMethodNote');
 
-  // ---- ACCESS GATE (inscription/connexion obligatoire) ----
-  // NB : démo front-end uniquement — un vrai site nécessite une authentification côté serveur.
-  const authGate = document.getElementById('authGate');
-  const siteContent = document.getElementById('siteContent');
-  const tabInscription = document.getElementById('tabInscription');
-  const tabConnexion = document.getElementById('tabConnexion');
-  const formInscription = document.getElementById('formInscription');
-  const formConnexion = document.getElementById('formConnexion');
-
-  siteContent.classList.add('locked');
-
-  function unlockSite(){
-    authGate.classList.add('unlocked');
-    siteContent.classList.remove('locked');
-    window.scrollTo(0,0);
-  }
-  tabInscription.addEventListener('click', () => {
-    tabInscription.classList.add('active'); tabConnexion.classList.remove('active');
-    formInscription.style.display = 'block'; formConnexion.style.display = 'none';
+// ═══════════════════════════════════════════════════════════
+//  CLOUDINARY
+// ═══════════════════════════════════════════════════════════
+async function cloudinaryUpload(file,progressCb){
+  const fd=new FormData();
+  fd.append('file',file); fd.append('upload_preset',CLOUDINARY_PRESET);
+  return new Promise((resolve,reject)=>{
+    const xhr=new XMLHttpRequest();
+    xhr.open('POST',`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD}/image/upload`);
+    if(progressCb) xhr.upload.addEventListener('progress',e=>{if(e.lengthComputable) progressCb(Math.round(e.loaded/e.total*100));});
+    xhr.onload=()=>{ if(xhr.status===200) resolve(JSON.parse(xhr.responseText).secure_url); else reject(new Error('Upload failed')); };
+    xhr.onerror=()=>reject(new Error('Network error')); xhr.send(fd);
   });
-  tabConnexion.addEventListener('click', () => {
-    tabConnexion.classList.add('active'); tabInscription.classList.remove('active');
-    formConnexion.style.display = 'block'; formInscription.style.display = 'none';
-  });
-  formInscription.addEventListener('submit', e => { e.preventDefault(); unlockSite(); });
-  formConnexion.addEventListener('submit', e => { e.preventDefault(); unlockSite(); });
+}
 
-  // Let visitors choose phone or email as their verification method
-  function setupMethodToggle(formId, labelId, inputId, noteId){
-    const scope = document.querySelector(`.method-toggle[data-form="${formId}"]`);
-    if(!scope) return;
-    const label = document.getElementById(labelId);
-    const input = document.getElementById(inputId);
-    const note = noteId ? document.getElementById(noteId) : null;
-    scope.querySelectorAll('button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        scope.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const method = btn.dataset.method;
-        if(method === 'phone'){
-          label.textContent = 'Contact';
-          input.type = 'text';
-          input.placeholder = '+228 9X XX XX XX';
-          if(note) note.textContent = 'Gratuit et rapide — vous recevrez un code de vérification par SMS.';
-        } else {
-          label.textContent = 'Adresse e-mail';
-          input.type = 'email';
-          input.placeholder = 'vous@exemple.com';
-          if(note) note.textContent = 'Gratuit et rapide — vous recevrez un code de vérification par e-mail.';
-        }
+// ═══════════════════════════════════════════════════════════
+//  PROFIL UTILISATEUR
+// ═══════════════════════════════════════════════════════════
+async function loadUserProfile(user){
+  try{
+    const snap=await db.collection('users').doc(user.uid).get();
+    if(!snap.exists) return;
+    const d=snap.data();
+    document.getElementById('walletTokenCount').textContent=fmt(d.tokens||0);
+    document.getElementById('walletGoldenCount').textContent=fmt(d.golden||0);
+    const fields=document.querySelectorAll('.profile-fields .field input');
+    if(fields[0]) fields[0].value=d.nom||'';
+    if(fields[1]) fields[1].value=d.prenom||'';
+    if(fields[2]) fields[2].value=d.contact||'';
+    if(fields[3]) fields[3].value=d.email||'';
+    if(d.photoURL){
+      const img=document.getElementById('profileAvatarImg');
+      const plus=document.getElementById('profileAvatarPlus');
+      img.src=d.photoURL; img.style.display='block'; plus.style.display='none';
+      profilePhotoUrl=d.photoURL;
+    }
+  }catch(err){console.warn('loadUserProfile:',err);}
+}
+
+const saveProfileBtn=document.querySelector('.profile-card .btn');
+if(saveProfileBtn){
+  saveProfileBtn.addEventListener('click',async e=>{
+    e.preventDefault(); if(!currentUser){alert('Connectez-vous d\'abord.');return;}
+    const fields=document.querySelectorAll('.profile-fields .field input');
+    const data={nom:fields[0]?.value.trim()||'',prenom:fields[1]?.value.trim()||'',
+      contact:fields[2]?.value.trim()||'',email:fields[3]?.value.trim()||''};
+    if(profilePhotoUrl) data.photoURL=profilePhotoUrl;
+    try{
+      await db.collection('users').doc(currentUser.uid).update(data);
+      saveProfileBtn.textContent='✓ Enregistré !';
+      setTimeout(()=>{saveProfileBtn.textContent='Enregistrer mes informations';},2000);
+    }catch(err){alert('Erreur : '+err.message);}
+  });
+}
+
+const profilePhotoInput=document.getElementById('profilePhotoInput');
+if(profilePhotoInput){
+  profilePhotoInput.addEventListener('change',async()=>{
+    const file=profilePhotoInput.files[0]; if(!file) return;
+    const url=await cloudinaryUpload(file,null).catch(()=>null);
+    if(url){
+      profilePhotoUrl=url;
+      document.getElementById('profileAvatarImg').src=url;
+      document.getElementById('profileAvatarImg').style.display='block';
+      document.getElementById('profileAvatarPlus').style.display='none';
+      if(currentUser) await db.collection('users').doc(currentUser.uid).update({photoURL:url});
+    }
+  });
+}
+
+// ═══════════════════════════════════════════════════════════
+//  CONSTRUCTEUR DE COMMANDE
+// ═══════════════════════════════════════════════════════════
+const unitPrice=document.getElementById('unitPrice');
+const qtyValEl=document.getElementById('qtyVal');
+const orderTotal=document.getElementById('orderTotal');
+let qty=2;
+function refreshOrder(){
+  const total=(parseFloat(unitPrice.value)||0)*qty;
+  orderTotal.textContent=fmt(total)+' F'; qtyValEl.textContent=qty;
+  const pa=document.getElementById('builderPayAmt'); if(pa) pa.textContent=fmt(total)+' F';
+  updateOrderLink();
+}
+document.getElementById('qtyMinus').addEventListener('click',()=>{qty=Math.max(1,qty-1);refreshOrder();});
+document.getElementById('qtyPlus').addEventListener('click',()=>{qty=Math.min(99,qty+1);refreshOrder();});
+unitPrice.addEventListener('input',refreshOrder);
+refreshOrder();
+
+const orderPhotoInput=document.getElementById('orderPhotoInput');
+if(orderPhotoInput){
+  orderPhotoInput.addEventListener('change',async()=>{
+    const file=orderPhotoInput.files[0]; if(!file) return;
+    const prog=document.getElementById('orderPhotoProgress');
+    const prev=document.getElementById('orderPhotoPreview');
+    const txt=document.getElementById('orderPhotoText');
+    const ic=document.getElementById('orderPhotoIcon');
+    prog.style.display='block'; txt.style.display='none'; ic.style.display='none';
+    try{
+      const url=await cloudinaryUpload(file,pct=>{prog.textContent=`Envoi en cours… ${pct}%`;});
+      orderPhotoUrl=url; prev.src=url; prev.style.display='block'; prog.style.display='none';
+    }catch(err){prog.textContent='Erreur lors de l\'envoi. Réessayez.';}
+  });
+}
+
+const sendOrderBtn=document.getElementById('sendOrderBtn');
+function updateOrderLink(){
+  if(!sendOrderBtn) return;
+  const total=(parseFloat(unitPrice.value)||0)*qty;
+  const msg=`Bonjour, je voudrais passer une commande : ${qty} article(s) à ${fmt(parseFloat(unitPrice.value)||0)} F l'unité, soit ${fmt(total)} F au total.${orderPhotoUrl?' Photo : '+orderPhotoUrl:' (photo à joindre)'}`;
+  sendOrderBtn.href=`https://wa.me/22870950715?text=${encodeURIComponent(msg)}`;
+}
+updateOrderLink();
+
+if(sendOrderBtn){
+  sendOrderBtn.addEventListener('click',async()=>{
+    if(!currentUser) return;
+    const total=(parseFloat(unitPrice.value)||0)*qty; if(total<=0) return;
+    try{
+      const userDoc=await db.collection('users').doc(currentUser.uid).get();
+      const d=userDoc.data()||{};
+      await db.collection('orders').add({
+        userId:currentUser.uid,
+        userName:`${d.prenom||''} ${d.nom||''}`.trim()||d.email||'Client',
+        contact:d.contact||d.email||'',
+        ref:genRef(), photoURL:orderPhotoUrl||'',
+        unitPrice:parseFloat(unitPrice.value)||0, qty, total, paid:0, pct:0,
+        status:'en_attente',
+        createdAt:firebase.firestore.FieldValue.serverTimestamp()
+      });
+    }catch(err){console.warn('saveOrder:',err);}
+  });
+}
+
+// ═══════════════════════════════════════════════════════════
+//  JAUGE DE PAIEMENT (démo interactive)
+// ═══════════════════════════════════════════════════════════
+const tankSlider=document.getElementById('tankSlider');
+const tankFill=document.getElementById('tankFill');
+const tankPct=document.getElementById('tankPct');
+const tankStatus=document.getElementById('tankStatus');
+const paidAmt=document.getElementById('paidAmt');
+const sliderVal=document.getElementById('sliderVal');
+const ORDER_TOTAL_DEMO=90000;
+function updateTank(p){
+  const top=colorForPct(Math.min(100,p+12)),bot=colorForPct(p);
+  tankFill.style.height=p+'%'; tankFill.style.background=`linear-gradient(180deg,${top},${bot})`;
+  tankPct.textContent=p+'%'; tankStatus.textContent=statusLabel(p);
+  paidAmt.textContent=fmt(ORDER_TOTAL_DEMO*p/100)+' F'; sliderVal.textContent=p+'%';
+}
+tankSlider.addEventListener('input',e=>updateTank(parseInt(e.target.value)));
+updateTank(parseInt(tankSlider.value));
+
+// ═══════════════════════════════════════════════════════════
+//  JETONS
+// ═══════════════════════════════════════════════════════════
+const btnToken=document.getElementById('btnToken');
+const btnGolden=document.getElementById('btnGolden');
+const buyQtyVal=document.getElementById('buyQtyVal');
+const buyPrice=document.getElementById('buyPrice');
+const tokenPayAmt=document.getElementById('tokenPayAmt');
+let currentCoin='token',buyQty=100;
+function refreshBuy(){
+  const amt=currentCoin==='token'?buyQty*0.5:buyQty*500;
+  buyQtyVal.textContent=buyQty; buyPrice.textContent=fmt(amt)+' F';
+  if(tokenPayAmt) tokenPayAmt.textContent=fmt(amt)+' F';
+}
+btnToken.addEventListener('click',()=>{currentCoin='token';buyQty=100;btnToken.classList.add('active');btnGolden.classList.remove('active');refreshBuy();});
+btnGolden.addEventListener('click',()=>{currentCoin='golden';buyQty=1;btnGolden.classList.add('active');btnToken.classList.remove('active');refreshBuy();});
+document.getElementById('buyMinus').addEventListener('click',()=>{const s=currentCoin==='token'?100:1;buyQty=Math.max(s,buyQty-s);refreshBuy();});
+document.getElementById('buyPlus').addEventListener('click',()=>{const s=currentCoin==='token'?100:1;buyQty+=s;refreshBuy();});
+refreshBuy();
+
+// ── Paiement auto/manuel ──────────────────────────────────────
+function setupPmIcons(scope,labelId,inputId){
+  const group=document.querySelector(`.pm-icons[data-scope="${scope}"]`); if(!group) return;
+  const label=document.getElementById(labelId),input=document.getElementById(inputId);
+  const copy={mixx:{l:'Numéro Mixx by Yas',p:'+228 9X XX XX XX'},flooz:{l:'Numéro Flooz',p:'+228 9X XX XX XX'},card:{l:'Numéro de carte',p:'•••• •••• •••• ••••'}};
+  group.querySelectorAll('button').forEach(btn=>{btn.addEventListener('click',()=>{group.querySelectorAll('button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');label.textContent=copy[btn.dataset.method].l;input.placeholder=copy[btn.dataset.method].p;input.value='';});});
+}
+setupPmIcons('builder','builderPmLabel','builderPmInput');
+setupPmIcons('token','tokenPmLabel','tokenPmInput');
+
+function setupPayModeToggle(scope,autoPanelId,manualPanelId,noteId){
+  const group=document.querySelector(`.buy-toggle[data-scope="${scope}"]`); if(!group) return;
+  const autoPanel=document.getElementById(autoPanelId),manualPanel=document.getElementById(manualPanelId);
+  const note=noteId?document.getElementById(noteId):null; let timer;
+  group.querySelectorAll('button').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      if(btn.dataset.mode==='auto'){if(note){note.classList.add('show');clearTimeout(timer);timer=setTimeout(()=>note.classList.remove('show'),5000);}return;}
+      group.querySelectorAll('button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+      if(note) note.classList.remove('show');
+      manualPanel.classList.add('show'); autoPanel.classList.remove('show');
+    });
+  });
+}
+setupPayModeToggle('builder','builderAutoPanel','builderManualPanel','builderAutoNote');
+setupPayModeToggle('tokenpay','tokenAutoPanel','tokenManualPanel','tokenAutoNote');
+
+// ═══════════════════════════════════════════════════════════
+//  CLASSEMENT PUBLIC
+// ═══════════════════════════════════════════════════════════
+async function loadLeaderboard(){
+  try{
+    // Paiements
+    const ordSnap=await db.collection('leaderboard_payments').orderBy('pct','desc').limit(10).get();
+    const lbPay=document.getElementById('lbPaiements');
+    if(!ordSnap.empty){
+      lbPay.innerHTML='';
+      ordSnap.docs.forEach((doc,i)=>{
+        const d=doc.data(),pct=d.pct||0,col=colorForPct(pct);
+        lbPay.innerHTML+=`<div class="lb-row ${i===0?'rank-1':''}" tabindex="0">
+          <div class="lb-rank">${String(i+1).padStart(2,'0')}</div>
+          <div class="lb-avatar">${(d.displayName||'?').slice(0,3).toUpperCase()}</div>
+          <div><div class="lb-name">${d.displayName||'Client'}</div><div class="lb-sub">Commande #${d.ref||'—'}</div></div>
+          <div class="lb-meta"><div class="v">${pct}%</div>
+          <div class="lb-bar-track"><div class="lb-bar-fill" style="width:${pct}%;background:${col};"></div></div></div></div>`;
+      });
+    }
+    // Jetons
+    const tokSnap=await db.collection('leaderboard_tokens').orderBy('total','desc').limit(10).get();
+    const lbTok=document.getElementById('lbJetons');
+    if(!tokSnap.empty){
+      lbTok.innerHTML='';
+      tokSnap.docs.forEach((doc,i)=>{
+        const d=doc.data();
+        lbTok.innerHTML+=`<div class="lb-row ${i===0?'rank-1':''}" tabindex="0">
+          <div class="lb-rank">${String(i+1).padStart(2,'0')}</div>
+          <div class="lb-avatar">${(d.displayName||'?').slice(0,3).toUpperCase()}</div>
+          <div><div class="lb-name">${d.displayName||'Client'}</div><div class="lb-sub">${d.golden||0} Golden · ${fmt(d.tokens||0)} Token</div></div>
+          <div class="lb-meta"><div class="v">${fmt(d.total||0)} pts</div></div></div>`;
+      });
+    }
+    // Clic sur ligne
+    document.querySelectorAll('.lb-row').forEach(row=>{
+      row.addEventListener('click',()=>{
+        const f=document.getElementById('lbFoot');
+        if(f){f.classList.add('show');setTimeout(()=>f.classList.remove('show'),5500);}
       });
     });
+  }catch(err){console.warn('loadLeaderboard:',err);}
+}
+
+document.getElementById('lbBtnPaiements').addEventListener('click',()=>{
+  document.getElementById('lbBtnPaiements').classList.add('active');
+  document.getElementById('lbBtnJetons').classList.remove('active');
+  document.getElementById('lbPaiements').classList.add('show');
+  document.getElementById('lbJetons').classList.remove('show');
+});
+document.getElementById('lbBtnJetons').addEventListener('click',()=>{
+  document.getElementById('lbBtnJetons').classList.add('active');
+  document.getElementById('lbBtnPaiements').classList.remove('active');
+  document.getElementById('lbJetons').classList.add('show');
+  document.getElementById('lbPaiements').classList.remove('show');
+});
+
+// ═══════════════════════════════════════════════════════════
+//  PANNEAU ADMIN
+// ═══════════════════════════════════════════════════════════
+function injectAdminButton(){
+  if(document.getElementById('adminFab')) return;
+  const fab=document.createElement('button');
+  fab.id='adminFab';
+  fab.textContent='⚙ Admin';
+  fab.style.cssText='position:fixed;bottom:28px;right:28px;z-index:800;background:var(--indigo-bright);color:white;border:none;padding:12px 20px;border-radius:999px;font-weight:800;font-size:.86rem;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.4);font-family:"Plus Jakarta Sans",sans-serif;';
+  fab.addEventListener('click',openAdminPanel);
+  document.body.appendChild(fab);
+}
+
+function openAdminPanel(){
+  let panel=document.getElementById('adminPanel');
+  if(!panel){
+    panel=document.createElement('div');
+    panel.id='adminPanel'; panel.className='admin-panel';
+    panel.innerHTML=`
+      <div class="admin-header">
+        <span>🛠 Administration — Estratega Shop</span>
+        <button class="admin-close" onclick="document.getElementById('adminPanel').classList.remove('open')">✕</button>
+      </div>
+      <div class="admin-tabs">
+        <button class="active" onclick="adminTab(this,'orders')">Commandes</button>
+        <button onclick="adminTab(this,'payments')">Classement paiements</button>
+        <button onclick="adminTab(this,'tokens')">Classement jetons</button>
+        <button onclick="adminTab(this,'users')">Clients</button>
+      </div>
+      <div class="admin-tab-content" id="adminContent"><p class="admin-hint">Chargement…</p></div>`;
+    document.body.appendChild(panel);
   }
-  setupMethodToggle('inscription', 'inscriptionContactLabel', 'inscriptionContactInput', 'inscriptionNote');
-  setupMethodToggle('connexion', 'connexionContactLabel', 'connexionContactInput', null);
+  panel.classList.add('open'); adminLoadOrders();
+}
 
-  // ---- CLASSEMENT toggle ----
-  const lbBtnPaiements = document.getElementById('lbBtnPaiements');
-  const lbBtnJetons = document.getElementById('lbBtnJetons');
-  const lbPaiements = document.getElementById('lbPaiements');
-  const lbJetons = document.getElementById('lbJetons');
-  lbBtnPaiements.addEventListener('click', () => {
-    lbBtnPaiements.classList.add('active'); lbBtnJetons.classList.remove('active');
-    lbPaiements.classList.add('show'); lbJetons.classList.remove('show');
-  });
-  lbBtnJetons.addEventListener('click', () => {
-    lbBtnJetons.classList.add('active'); lbBtnPaiements.classList.remove('active');
-    lbJetons.classList.add('show'); lbPaiements.classList.remove('show');
-  });
+window.adminTab=function(btn,tab){
+  document.querySelectorAll('.admin-tabs button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  if(tab==='orders') adminLoadOrders();
+  if(tab==='payments') adminLoadLbPayments();
+  if(tab==='tokens') adminLoadLbTokens();
+  if(tab==='users') adminLoadUsers();
+};
 
-  // ---- prefilled WhatsApp message for the order builder ----
-  const sendOrderBtn = document.getElementById('sendOrderBtn');
-  function updateOrderLink(){
-    const total = (parseFloat(unitPrice.value)||0) * qty;
-    const msg = `Bonjour, je voudrais passer une commande : ${qty} article(s) à ${fmt(parseFloat(unitPrice.value)||0)} F l'unité, soit ${fmt(total)} F au total. Je joins la photo de l'article.`;
-    sendOrderBtn.href = `https://wa.me/22870950715?text=${encodeURIComponent(msg)}`;
-  }
-  unitPrice.addEventListener('input', updateOrderLink);
-  document.getElementById('qtyMinus').addEventListener('click', updateOrderLink);
-  document.getElementById('qtyPlus').addEventListener('click', updateOrderLink);
-  updateOrderLink();
-
-  // ---- CONTEXTUAL NOTICES (only appear when a visitor attempts a restricted action) ----
-  // Order total: read-only, calculated automatically — show why only on interaction.
-  const orderTotalEl = document.getElementById('orderTotal');
-  const totalTip = document.getElementById('totalTip');
-  function flashTip(tipEl, el){
-    tipEl.classList.add('show');
-    clearTimeout(el._tipTimer);
-    el._tipTimer = setTimeout(() => tipEl.classList.remove('show'), 4500);
-  }
-  orderTotalEl.addEventListener('click', () => flashTip(totalTip, orderTotalEl));
-  orderTotalEl.addEventListener('focus', () => flashTip(totalTip, orderTotalEl));
-  document.addEventListener('click', e => {
-    if(!e.target.closest('.total-value-wrap')) totalTip.classList.remove('show');
-  });
-
-  // Leaderboard: read-only public ranking — explain the admin-only rule only if someone tries to interact with a row.
-  const lbFoot = document.getElementById('lbFoot');
-  let lbFootTimer;
-  document.querySelectorAll('.lb-row').forEach(row => {
-    row.setAttribute('tabindex', '0');
-    row.addEventListener('click', () => {
-      lbFoot.classList.add('show');
-      clearTimeout(lbFootTimer);
-      lbFootTimer = setTimeout(() => lbFoot.classList.remove('show'), 5500);
+// Commandes
+async function adminLoadOrders(){
+  const c=document.getElementById('adminContent');
+  c.innerHTML='<p class="admin-hint">Chargement…</p>';
+  try{
+    const snap=await db.collection('orders').orderBy('createdAt','desc').limit(30).get();
+    if(snap.empty){c.innerHTML='<div class="lb-empty">Aucune commande pour l\'instant.</div>';return;}
+    c.innerHTML='<p class="admin-hint">Modifiez le montant payé puis cliquez sur "Mettre à jour".</p>';
+    snap.docs.forEach(doc=>{
+      const d=doc.data(),pct=d.total>0?Math.min(100,Math.round((d.paid||0)/d.total*100)):0,col=colorForPct(pct);
+      const card=document.createElement('div'); card.className='admin-order-card';
+      card.innerHTML=`<div class="ao-header">
+        <span class="ao-ref">#${d.ref||doc.id.slice(-6)}</span>
+        <span class="ao-name">${d.userName||'Client'}</span>
+        <span class="ao-total">${fmt(d.total||0)} F</span></div>
+        ${d.photoURL?`<img class="ao-photo" src="${d.photoURL}" alt="Photo">`:''} 
+        <div class="ao-progress"><div class="ao-bar"><div class="ao-fill" style="width:${pct}%;background:${col};"></div></div>
+        <span>${fmt(d.paid||0)} / ${fmt(d.total||0)} F (${pct}%)</span></div>
+        <div class="ao-update">
+          <input type="number" id="paid_${doc.id}" value="${d.paid||0}" placeholder="Montant payé (FCFA)">
+          <button onclick="adminUpdatePaid('${doc.id}','${d.userId||''}','${d.ref||''}','${(d.userName||'').replace(/'/g,'')  }',${d.total||0})">Mettre à jour</button>
+        </div>
+        <div class="ao-contact">${d.contact||d.email||'—'} · Qté : ${d.qty||1} · Px unit. : ${fmt(d.unitPrice||0)} F</div>`;
+      c.appendChild(card);
     });
+  }catch(err){c.innerHTML=`<p style="color:#e63950">Erreur : ${err.message}</p>`;}
+}
+
+window.adminUpdatePaid=async function(orderId,userId,ref,userName,total){
+  const input=document.getElementById('paid_'+orderId);
+  const paid=parseFloat(input.value)||0;
+  const pct=total>0?Math.min(100,Math.round(paid/total*100)):0;
+  try{
+    await db.collection('orders').doc(orderId).update({paid,pct});
+    await db.collection('leaderboard_payments').doc(orderId).set({
+      userId,ref,displayName:userName,paid,total,pct,
+      updatedAt:firebase.firestore.FieldValue.serverTimestamp()
+    });
+    if(userId&&paid>0) await db.collection('users').doc(userId).update({tokens:firebase.firestore.FieldValue.increment(Math.round(paid*0.10))});
+    alert(`✓ ${fmt(paid)} F (${pct}%) enregistré.`);
+    loadLeaderboard(); adminLoadOrders();
+  }catch(err){alert('Erreur : '+err.message);}
+};
+
+// Classement paiements
+async function adminLoadLbPayments(){
+  const c=document.getElementById('adminContent');
+  c.innerHTML='<p class="admin-hint">Entrées du classement paiements (mises à jour automatiquement depuis Commandes).</p>';
+  const snap=await db.collection('leaderboard_payments').orderBy('pct','desc').get();
+  if(snap.empty){c.innerHTML+='<div class="lb-empty">Aucune entrée.</div>';return;}
+  snap.docs.forEach(doc=>{
+    const d=doc.data(),row=document.createElement('div'); row.className='admin-lb-row';
+    row.innerHTML=`<span>${d.displayName||'—'} (#${d.ref||'—'}) — ${d.pct||0}%</span>
+      <button onclick="adminDeleteLbPayment('${doc.id}')">Retirer</button>`;
+    c.appendChild(row);
   });
+}
+window.adminDeleteLbPayment=async function(id){
+  if(!confirm('Retirer ?')) return;
+  await db.collection('leaderboard_payments').doc(id).delete();
+  loadLeaderboard(); adminLoadLbPayments();
+};
+
+// Classement jetons
+async function adminLoadLbTokens(){
+  const c=document.getElementById('adminContent');
+  c.innerHTML=`<p class="admin-hint">Gérez manuellement le classement des jetons.</p>
+    <div class="admin-add-form">
+      <h4>Ajouter / modifier une entrée</h4>
+      <input id="lbTokId" type="text" placeholder="ID (vide = nouveau)">
+      <input id="lbTokName" type="text" placeholder="Nom affiché (ex: Espoir A.)">
+      <input id="lbTokGolden" type="number" placeholder="Golden" min="0">
+      <input id="lbTokTokens" type="number" placeholder="Token" min="0">
+      <button onclick="adminSaveLbToken()">Enregistrer</button>
+    </div>`;
+  const snap=await db.collection('leaderboard_tokens').orderBy('total','desc').get();
+  snap.docs.forEach(doc=>{
+    const d=doc.data(),row=document.createElement('div'); row.className='admin-lb-row';
+    row.innerHTML=`<span>${d.displayName||'—'} — ${d.golden||0} Golden · ${fmt(d.tokens||0)} Token</span>
+      <button onclick="adminDeleteLbToken('${doc.id}')">Retirer</button>`;
+    c.appendChild(row);
+  });
+}
+window.adminSaveLbToken=async function(){
+  const id=document.getElementById('lbTokId').value.trim()||db.collection('leaderboard_tokens').doc().id;
+  const name=document.getElementById('lbTokName').value.trim();
+  const golden=parseInt(document.getElementById('lbTokGolden').value)||0;
+  const tokens=parseInt(document.getElementById('lbTokTokens').value)||0;
+  if(!name){alert('Saisissez un nom.');return;}
+  await db.collection('leaderboard_tokens').doc(id).set({displayName:name,golden,tokens,total:golden*1000+tokens,updatedAt:firebase.firestore.FieldValue.serverTimestamp()});
+  alert('✓ Enregistré.'); loadLeaderboard(); adminLoadLbTokens();
+};
+window.adminDeleteLbToken=async function(id){
+  if(!confirm('Retirer ?')) return;
+  await db.collection('leaderboard_tokens').doc(id).delete();
+  loadLeaderboard(); adminLoadLbTokens();
+};
+
+// Clients
+async function adminLoadUsers(){
+  const c=document.getElementById('adminContent');
+  c.innerHTML='<p class="admin-hint">Clients inscrits (50 derniers).</p>';
+  try{
+    const snap=await db.collection('users').orderBy('createdAt','desc').limit(50).get();
+    if(snap.empty){c.innerHTML+='<div class="lb-empty">Aucun client.</div>';return;}
+    snap.docs.forEach(doc=>{
+      const d=doc.data(),row=document.createElement('div');
+      row.className='admin-lb-row'; row.style.flexWrap='wrap';
+      row.innerHTML=`<div><strong style="color:white">${d.prenom||''} ${d.nom||''}</strong>
+        <span style="color:var(--ink-500);font-size:.76rem;margin-left:8px">${d.email||''}</span><br>
+        <span style="font-size:.78rem;color:var(--ink-500)">${d.contact||''} · ${d.tokens||0} Token · ${d.golden||0} Golden</span></div>
+        <button onclick="adminCreditTokens('${doc.id}','${(d.prenom||d.email||'Client').replace(/'/g,'')}')">Créditer jetons</button>`;
+      c.appendChild(row);
+    });
+  }catch(err){c.innerHTML+=`<p style="color:#e63950">Erreur : ${err.message}</p>`;}
+}
+window.adminCreditTokens=async function(uid,name){
+  const amount=parseInt(prompt(`Créditer combien de Token à ${name} ?`));
+  if(!amount||amount<=0) return;
+  try{
+    await db.collection('users').doc(uid).update({tokens:firebase.firestore.FieldValue.increment(amount)});
+    alert(`✓ ${amount} Token crédités à ${name}.`); loadLeaderboard();
+  }catch(err){alert('Erreur : '+err.message);}
+};
+
+// ── Notices contextuelles ─────────────────────────────────────
+const orderTotalEl=document.getElementById('orderTotal');
+const totalTip=document.getElementById('totalTip');
+function flashTip(tipEl,el){tipEl.classList.add('show');clearTimeout(el._t);el._t=setTimeout(()=>tipEl.classList.remove('show'),4500);}
+if(orderTotalEl&&totalTip){
+  orderTotalEl.addEventListener('click',()=>flashTip(totalTip,orderTotalEl));
+  orderTotalEl.addEventListener('focus',()=>flashTip(totalTip,orderTotalEl));
+  document.addEventListener('click',e=>{if(!e.target.closest('.total-value-wrap')) totalTip.classList.remove('show');});
+}
 </script>
 </body>
 </html>
