@@ -1673,34 +1673,57 @@ function showGateMsg(msg,type){
 // Inscription
 document.getElementById('formInscription').addEventListener('submit',async e=>{
   e.preventDefault();
-  const btn=e.target.querySelector('button[type=submit]');
-  const email=document.getElementById('inscriptionContactInput').value.trim();
-  const pwd=e.target.querySelector('input[type=password]').value;
-  const inputs=e.target.querySelectorAll('input[type=text]');
-  const nom=inputs[0]?.value.trim()||'';
-  const prenom=inputs[1]?.value.trim()||'';
-  const contact=inputs[2]?.value.trim()||'';
+  const btn     = document.getElementById('regSubmit');
+  const nom     = (document.getElementById('regLastName')?.value||'').trim();
+  const prenom  = (document.getElementById('regFirstName')?.value||'').trim();
+  const contact = (document.getElementById('regContact')?.value||'').trim();
+  const email   = (document.getElementById('regEmail')?.value||'').trim();
+  const pwd     = (document.getElementById('regPassword')?.value||'');
+
+  if(!email){ showGateMsg('Saisissez votre adresse e-mail.','error'); return; }
+  if(pwd.length<6){ showGateMsg('Le mot de passe doit contenir au moins 6 caractères.','error'); return; }
+
   btn.disabled=true; btn.textContent='Création en cours…';
   try{
-    const c=await auth.createUserWithEmailAndPassword(email,pwd);
-    await db.collection('users').doc(c.user.uid).set({
-      nom,prenom,email,contact,photoURL:'',tokens:0,golden:0,
-      createdAt:firebase.firestore.FieldValue.serverTimestamp()
-    });
-    await c.user.sendEmailVerification();
-    showGateMsg('✓ Compte créé ! Vérifiez votre e-mail.','success');
-  }catch(err){showGateMsg(firebaseErrorFr(err.code),'error');btn.disabled=false;btn.textContent='Créer mon compte';}
+    // Step 1 — Create Firebase Auth account → triggers onAuthStateChanged → unlocks site
+    const cred = await auth.createUserWithEmailAndPassword(email, pwd);
+
+    // Step 2 — Save profile in background (non-blocking so site opens even if Firestore rules not yet set)
+    db.collection('users').doc(cred.user.uid).set({
+      nom, prenom, email, contact,
+      photoURL:'', tokens:0, golden:0,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    }).catch(err => console.warn('Firestore profile write failed (check rules):', err.message));
+
+    // Step 3 — Verification email in background (non-blocking)
+    cred.user.sendEmailVerification().catch(()=>{});
+
+  } catch(err){
+    console.error('Inscription error:', err.code, err.message);
+    showGateMsg(firebaseErrorFr(err.code), 'error');
+    btn.disabled=false; btn.textContent='Créer mon compte';
+  }
 });
 
 // Connexion
 document.getElementById('formConnexion').addEventListener('submit',async e=>{
   e.preventDefault();
-  const btn=e.target.querySelector('button[type=submit]');
-  const email=document.getElementById('connexionContactInput').value.trim();
-  const pwd=e.target.querySelector('input[type=password]').value;
+  const btn   = document.getElementById('loginSubmit');
+  const email = (document.getElementById('loginEmail')?.value||'').trim();
+  const pwd   = (document.getElementById('loginPassword')?.value||'');
+
+  if(!email){ showGateMsg('Saisissez votre adresse e-mail.','error'); return; }
+  if(!pwd)  { showGateMsg('Saisissez votre mot de passe.','error'); return; }
+
   btn.disabled=true; btn.textContent='Connexion…';
-  try{ await auth.signInWithEmailAndPassword(email,pwd); }
-  catch(err){ showGateMsg(firebaseErrorFr(err.code),'error'); btn.disabled=false; btn.textContent='Se connecter'; }
+  try{
+    await auth.signInWithEmailAndPassword(email, pwd);
+    // Site opens automatically via onAuthStateChanged
+  } catch(err){
+    console.error('Connexion error:', err.code, err.message);
+    showGateMsg(firebaseErrorFr(err.code), 'error');
+    btn.disabled=false; btn.textContent='Se connecter';
+  }
 });
 
 // Déconnexion
@@ -1708,25 +1731,6 @@ const logoutBtn=document.getElementById('logoutBtn');
 if(logoutBtn) logoutBtn.addEventListener('click',()=>auth.signOut());
 
 // Bascule téléphone/email (téléphone bientôt)
-function setupMethodToggle(formId,labelId,inputId,noteId){
-  const scope=document.querySelector(`.method-toggle[data-form="${formId}"]`);
-  if(!scope) return;
-  const label=document.getElementById(labelId),input=document.getElementById(inputId);
-  const note=noteId?document.getElementById(noteId):null; let timer;
-  scope.querySelectorAll('button').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      if(btn.dataset.method==='phone'){
-        if(note){note.classList.add('show');clearTimeout(timer);timer=setTimeout(()=>note.classList.remove('show'),5000);}
-        return;
-      }
-      scope.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active'); if(note) note.classList.remove('show');
-      label.textContent='Adresse e-mail'; input.type='email'; input.placeholder='vous@exemple.com';
-    });
-  });
-}
-setupMethodToggle('inscription','inscriptionContactLabel','inscriptionContactInput','inscriptionMethodNote');
-setupMethodToggle('connexion','connexionContactLabel','connexionContactInput','connexionMethodNote');
 
 // ═══════════════════════════════════════════════════════════
 //  CLOUDINARY
