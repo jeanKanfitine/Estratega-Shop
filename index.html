@@ -972,9 +972,9 @@
 <header class="topbar">
   <div class="topbar-inner">
     <div class="wallet" aria-label="Mon portefeuille de jetons">
-      <div class="wallet-chip"><span class="coin-mini token">E</span><span id="walletTokenCount">1 240</span></div>
+      <div class="wallet-chip"><span class="coin-mini token">E</span><span id="walletTokenCount">0</span></div>
       <div class="wallet-divider"></div>
-      <div class="wallet-chip"><span class="coin-mini golden">E</span><span id="walletGoldenCount">3</span></div>
+      <div class="wallet-chip"><span class="coin-mini golden">E</span><span id="walletGoldenCount">0</span></div>
       <button class="wallet-add" title="Acheter des jetons" onclick="document.getElementById('jetons').scrollIntoView({behavior:'smooth'})">+</button>
     </div>
 
@@ -1189,7 +1189,7 @@
       <div class="field-row">
         <div class="field">
           <label>Coût unitaire (FCFA)</label>
-          <input type="number" id="unitPrice" value="15000" min="0">
+          <input type="number" id="unitPrice" value="0" min="0">
         </div>
         <div class="field">
           <label>Quantité</label>
@@ -1203,7 +1203,7 @@
       <div class="total-row">
         <span class="cap">Coût total</span>
         <div class="total-value-wrap">
-          <span class="val" id="orderTotal" tabindex="0" role="button" aria-describedby="totalTip">30 000 F</span>
+          <span class="val" id="orderTotal" tabindex="0" role="button" aria-describedby="totalTip">0 F</span>
           <div class="micro-tip" id="totalTip">Ce montant est calculé automatiquement. Seul l'administrateur peut le modifier — il le confirme avec vous sur WhatsApp.</div>
         </div>
       </div>
@@ -1350,114 +1350,11 @@
 
   <div class="lb-card reveal">
     <div class="lb-list show" id="lbPaiements">
-      <div class="lb-row rank-1">
-        <div class="lb-rank">01</div>
-        <div class="lb-avatar">E.A</div>
-        <div>
-          <div class="lb-name">Espoir A.</div>
-          <div class="lb-sub">Commande #EST-0241</div>
-        </div>
-        <div class="lb-meta">
-          <div class="v">92%</div>
-          <div class="lb-bar-track"><div class="lb-bar-fill" style="width:92%; background:#34c759;"></div></div>
-        </div>
-      </div>
-      <div class="lb-row">
-        <div class="lb-rank">02</div>
-        <div class="lb-avatar">N.K</div>
-        <div>
-          <div class="lb-name">Nadia K.</div>
-          <div class="lb-sub">Commande #EST-0238</div>
-        </div>
-        <div class="lb-meta">
-          <div class="v">77%</div>
-          <div class="lb-bar-track"><div class="lb-bar-fill" style="width:77%; background:#f4c430;"></div></div>
-        </div>
-      </div>
-      <div class="lb-row">
-        <div class="lb-rank">03</div>
-        <div class="lb-avatar">M.T</div>
-        <div>
-          <div class="lb-name">Mawuli T.</div>
-          <div class="lb-sub">Commande #EST-0245</div>
-        </div>
-        <div class="lb-meta">
-          <div class="v">58%</div>
-          <div class="lb-bar-track"><div class="lb-bar-fill" style="width:58%; background:#f3922b;"></div></div>
-        </div>
-      </div>
-      <div class="lb-row">
-        <div class="lb-rank">04</div>
-        <div class="lb-avatar">A.D</div>
-        <div>
-          <div class="lb-name">Ama D.</div>
-          <div class="lb-sub">Commande #EST-0249</div>
-        </div>
-        <div class="lb-meta">
-          <div class="v">31%</div>
-          <div class="lb-bar-track"><div class="lb-bar-fill" style="width:31%; background:#f3922b;"></div></div>
-        </div>
-      </div>
-      <div class="lb-row">
-        <div class="lb-rank">05</div>
-        <div class="lb-avatar">S.B</div>
-        <div>
-          <div class="lb-name">Sena B.</div>
-          <div class="lb-sub">Commande #EST-0251</div>
-        </div>
-        <div class="lb-meta">
-          <div class="v">14%</div>
-          <div class="lb-bar-track"><div class="lb-bar-fill" style="width:14%; background:#e6314c;"></div></div>
-        </div>
-      </div>
+      <div class="lb-empty">Le classement se remplira dès les premières commandes. Soyez le premier ! 🏆</div>
     </div>
 
     <div class="lb-list" id="lbJetons">
-      <div class="lb-row rank-1">
-        <div class="lb-rank">01</div>
-        <div class="lb-avatar">M.T</div>
-        <div>
-          <div class="lb-name">Mawuli T.</div>
-          <div class="lb-sub">8 Golden · 640 Token</div>
-        </div>
-        <div class="lb-meta"><div class="v">4 640 pts</div></div>
-      </div>
-      <div class="lb-row">
-        <div class="lb-rank">02</div>
-        <div class="lb-avatar">E.A</div>
-        <div>
-          <div class="lb-name">Espoir A.</div>
-          <div class="lb-sub">5 Golden · 1 240 Token</div>
-        </div>
-        <div class="lb-meta"><div class="v">3 740 pts</div></div>
-      </div>
-      <div class="lb-row">
-        <div class="lb-rank">03</div>
-        <div class="lb-avatar">A.D</div>
-        <div>
-          <div class="lb-name">Ama D.</div>
-          <div class="lb-sub">3 Golden · 900 Token</div>
-        </div>
-        <div class="lb-meta"><div class="v">2 400 pts</div></div>
-      </div>
-      <div class="lb-row">
-        <div class="lb-rank">04</div>
-        <div class="lb-avatar">N.K</div>
-        <div>
-          <div class="lb-name">Nadia K.</div>
-          <div class="lb-sub">2 Golden · 510 Token</div>
-        </div>
-        <div class="lb-meta"><div class="v">1 510 pts</div></div>
-      </div>
-      <div class="lb-row">
-        <div class="lb-rank">05</div>
-        <div class="lb-avatar">S.B</div>
-        <div>
-          <div class="lb-name">Sena B.</div>
-          <div class="lb-sub">1 Golden · 220 Token</div>
-        </div>
-        <div class="lb-meta"><div class="v">720 pts</div></div>
-      </div>
+      <div class="lb-empty">Le classement des jetons est vide pour l'instant. Passez une commande pour gagner vos premiers Token !</div>
     </div>
 
     <div class="lb-foot" id="lbFoot">🔒 Classement géré exclusivement par l'administrateur principal — lui seul peut ajouter, modifier ou retirer ces données. Les noms sont affichés en partie (prénom + initiale) pour préserver la confidentialité des clients.</div>
@@ -1808,7 +1705,7 @@ if(profilePhotoInput){
 const unitPrice=document.getElementById('unitPrice');
 const qtyValEl=document.getElementById('qtyVal');
 const orderTotal=document.getElementById('orderTotal');
-let qty=2;
+let qty=1;
 function refreshOrder(){
   const total=(parseFloat(unitPrice.value)||0)*qty;
   orderTotal.textContent=fmt(total)+' F'; qtyValEl.textContent=qty;
